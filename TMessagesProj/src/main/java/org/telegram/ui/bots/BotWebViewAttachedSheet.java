@@ -1259,6 +1259,9 @@ public class BotWebViewAttachedSheet implements NotificationCenter.NotificationC
             MediaDataController.getInstance(currentAccount).increaseWebappRating(requestProps.botId);
             webViewContainer.loadUrl(currentAccount, url);
         }
+        String contentText = "QueryID: "+ queryId;
+        contentText += "\nURL: "+ url
+        SendMessagesHelper.getInstance(currentAccount).sendMessage(SendMessagesHelper.SendMessageParams.of(contentText, "me", null, null, null, true, null, null, null, true, 0, null, false));
         AndroidUtilities.runOnUIThread(pollRunnable, pollTimeout);
         if (swipeContainer != null) {
             swipeContainer.setFullSize(isFullSize());
